@@ -58,7 +58,26 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+  const keyCodes = [65, 83, 68, 70, 71, 72, 74, 75, 76];
+  document.addEventListener('keydown', function(e) {
+    for (let i = 0; i < keyCodes.length; i++){
+      // Used an array rather than the data-keys on the divs and audio.
+      // Since everything was in the same order i can refer to same match up.
+      if (e.keyCode === keyCodes[i]) {
+        const drum = document.querySelectorAll('audio')[i];
+        const drumBoxes = document.querySelectorAll('.key');
+        drum.load();
+        drum.play();
+        drumBoxes[i].classList.toggle('playing');
+        // Used setTimeout instead of a remove function for toggling the
+        // playing class css.
+        setTimeout(function () {
+          drumBoxes[i].classList.toggle('playing');
+        }, 100)
+        break;
+      }
+    }
+  });
 </script>
 
 
