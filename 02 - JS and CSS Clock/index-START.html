@@ -67,7 +67,33 @@
   </style>
 
   <script>
+    const secHand = document.querySelector('.second-hand');
+    const minHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
 
+    secHand.style.transformOrigin = "100% 100%";
+    minHand.style.transformOrigin = "100% 100%";
+    hourHand.style.transformOrigin = "100% 100%";
+
+    function runClock() {
+      const currentDate = new Date();
+      const hour = currentDate.getHours();
+      const minute = currentDate.getMinutes();
+      const second = currentDate.getSeconds();
+
+      const degSecond = ((second) * 6) + 90;
+      const degMinute = ((minute) * 6) + (second / 10) + 90;
+      const degHour = ((hour / 2) * 15) + (minute / 10) + 90;
+
+
+      secHand.style.transform = `rotate(${degSecond}deg)`;
+      minHand.style.transform = `rotate(${degMinute}deg)`;
+      hourHand.style.transform = `rotate(${degHour}deg)`;
+
+      setTimeout(runClock, 500);
+    }
+
+    runClock();
 
   </script>
 </body>
