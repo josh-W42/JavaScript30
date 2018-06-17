@@ -45,6 +45,24 @@
   </style>
 
   <script>
+
+    function changeBlur() {
+      let blurSlider = document.querySelector('#blur');
+      document.querySelector('img').style.filter = `blur(${blurSlider.value}px)`;
+      setTimeout(changeBlur, 10);
+    }
+
+    function changeContent() {
+      let spacingSlider = document.querySelector('#spacing');
+      let colorBox = document.querySelector('#base');
+      document.querySelector('.hl').style.color = `${colorBox.value}`;
+      document.querySelector('img').style.border = `${spacingSlider.value}px solid ${colorBox.value}`;
+      setTimeout(changeContent, 10);
+    }
+
+    changeContent();
+    changeBlur();
+
   </script>
 
 </body>
